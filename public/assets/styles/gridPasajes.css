@@ -1,0 +1,26 @@
+.grid-pasajes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+header{
+    grid-column: 1/-1;
+}
+
+
+.banner{
+    grid-column: 1/-1;
+}
+
+.main-pasajes {
+    display: grid;
+    grid-column: 2/6;
+}
+@media screen and (max-width:768px){
+    .main-pasajes{
+        grid-column: 1/-1;
+        margin:1rem
+    }
+}
+.footer{
+    grid-column: 1/-1;
+}
