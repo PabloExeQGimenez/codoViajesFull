@@ -1,0 +1,170 @@
+const db = require("../db/db.js");
+
+const getAllReservas = (req, res) => {
+  const sql = "SELECT * FROM reservas";
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error al obtener las reservas",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      results,
+    });
+  });
+};
+
+const createReserva = (req, res) => {
+  const { usuario_id, paquete_id, fecha, cantidad } = req.body;
+
+  if (!usuario_id || !paquete_id || !fecha || !cantidad) {
+    return res.status(400).json({
+      success: false,
+      message: "Faltan datos",
+    });
+  }
+
+  const sql =
+    "INSERT INTO reservas (usuario_id, paquete_id, fecha, cantidad) VALUES (?, ?, ?, ?)";
+  db.query(sql, [usuario_id, paquete_id, fecha, cantidad], (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "No se creó la reserva",
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: "Reserva creada con exito",
+      data: {
+        id: results.insertId,
+        usuario_id,
+        paquete_id,
+        fecha,
+        cantidad,
+      },
+    });
+  });
+};
+
+const getReservaById = (req, res) => {
+  const { id } = req.params;
+
+  if (!id || isNaN(id)) {
+    return res.status(400).json({
+      success: false,
+      message: "Id incorrecto",
+    });
+  }
+
+  const sql = "SELECT * FROM reservas WHERE id = ?";
+  db.query(sql, [id], (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error en la solicitud",
+      });
+    }
+
+    if (results.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Reserva no encontrada",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Solicitud procesada con exito",
+      data: results[0],
+    });
+  });
+};
+
+const updateReserva = (req, res) => {
+  const { id } = req.params
+  const {usuario_id, paquete_id, fecha, cantidad} = req.body
+
+  if(!id || isNaN(id)){
+    return res.status(400).json({
+      success: false,
+      message: "Id incorrecto"
+    })
+  }
+
+  if(!usuario_id || !paquete_id || !fecha || !cantidad){
+    return res.status(400).json({
+      success: false,
+      message:"Faltan datos"
+    })
+  } 
+
+  const sql = 'UPDATE reservas SET usuario_id = ?, paquete_id = ?, fecha = ?, cantidad = ? WHERE id = ?'
+  db.query(sql, [usuario_id, paquete_id, fecha, cantidad, id], (err, results) => {
+    if(err){
+      return res.status(500).json({
+        success: false,
+        message:"error al actualizar la reserva",
+        error: err.message
+      })
+    }
+    if (results.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Reserva no encontrada"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message:"Reserva actualizada",
+      data: {
+        id,
+        usuario_id,
+        paquete_id,
+        fecha,
+        cantidad
+      }
+    })
+  })
+}
+
+const deleteReserva = (req, res) => {
+  const { id } = req.params
+
+  if(!id || isNaN(id)){
+    return res.status(400).json({
+      succsess: false,
+      message:"Error en el id"
+    })
+  }
+
+  const sql = 'DELETE FROM reservas WHERE id = ?'
+  db.query(sql,[id], (err, results) => {
+    if(err){
+      return res.status(500).json({
+        success:false,
+        message:"Error al eliminar la reserva",
+        error: err.message
+      })
+    }
+
+    res.status(200).json({
+      success: true,
+      message:"Reserva eliminada con exito"
+    })
+  })
+}
+
+module.exports = {
+  getAllReservas,
+  createReserva,
+  getReservaById,
+  updateReserva,
+  deleteReserva
+};
