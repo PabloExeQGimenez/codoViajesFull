@@ -7,5 +7,6 @@ router.get("/reservas/:id", reservaController.getReservaById)
 router.post("/reservas", reservaController.createReserva)
 router.put("/reservas/:id", reservaController.updateReserva)
 router.delete("/reservas/:id", reservaController.deleteReserva)
+router.put('/reservas/:id/pagar', reservaController.buyReserva)
 
 module.exports = router

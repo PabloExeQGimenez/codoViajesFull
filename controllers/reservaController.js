@@ -161,10 +161,47 @@ const deleteReserva = (req, res) => {
   })
 }
 
+const buyReserva = (req, res) => {
+  const {id} = req.params 
+  const {pagada} = req.body
+
+  if(!id){
+    return res.status(400).json({
+      success: false,
+      message:"Error en el id"
+    })
+  }
+  
+  const sql = 'UPDATE reservas SET pagada = ? WHERE id = ?'
+  db.query(sql, [pagada, id], (err, results) => {
+    if(err){
+      return res.status(500).json({
+        success: false,
+        message:"error en la db"
+      })
+    }
+    if (results.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Reserva no encontrada"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message:"Pago realizado con exito",
+      data:{
+        id, pagada
+      }
+    })
+  })
+}
+
 module.exports = {
   getAllReservas,
   createReserva,
   getReservaById,
   updateReserva,
-  deleteReserva
-};
+  deleteReserva,
+  buyReserva
+}
