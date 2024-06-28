@@ -1,0 +1,10 @@
+
+.container{
+  display: grid;
+  grid-template-areas: 
+  "menu panel panel panel panel panel panel panel"
+  ;
+}
+
+.menu   {grid-area: menu  }
+.panel  {grid-area: panel }

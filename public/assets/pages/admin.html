@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paquetes de Viaje</title>
-  <link rel="stylesheet" href="../styles/admin.css">
-</head>
-<body>
-    <h1>Paquetes de Viaje</h1>
-    <table id="paquetesTabla">
-        <thead>
-            <tr>
+    <link rel="stylesheet" href="../styles/admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <h3>Administrador</h3>
+        <a href="">Usuarios</a>
+        <a href="">Paquetes</a>
+        <a href="">Reservas</a>
+        <a href="">Opiniones</a>
+      </div>
+      <div class="panel">
+        <div class="panel__usuarios">
+          <table id="usuarios_tabla">
+            <thead>
+              <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Costo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Las filas se agregarán aquí dinámicamente -->
-        </tbody>
-    </table>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+                <th>Reservas</th>
+                <th>Opiniones</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <script src="../scripts/admin.js"></script>
-</body>
+  </body>
 </html>
