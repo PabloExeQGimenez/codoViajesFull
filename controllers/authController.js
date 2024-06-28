@@ -85,7 +85,34 @@ const iniciarSesion = (req, res) => {
 
 const getAllUsuarios = (req, res) => {
   
-  const sql = 'SELECT * FROM usuarios'
+  const sql = `
+    SELECT
+      u.id,
+      u.nombre,
+      u.apellido,
+      u.email,
+      JSON_ARRAYAGG(
+        JSON_OBJECT(
+          'id', o.id,
+          'paquete_id', o.paquete_id,
+          'comentario', o.comentario,
+          'calificacion', o.calificacion,
+          'fecha', o.fecha
+        )
+      ) AS opiniones,
+      JSON_ARRAYAGG(
+        JSON_OBJECT(
+          'id', r.id,
+          'paquete_id', r.paquete_id,
+          'fecha', r.fecha,
+          'cantidad', r.cantidad,
+          'pagada', r.pagada
+        )
+      ) AS reservas
+    FROM usuarios u
+    LEFT JOIN opiniones o ON u.id = o.usuario_id
+    LEFT JOIN reservas r ON u.id = r.usuario_id
+    GROUP BY u.id, u.nombre, u.apellido, u.email;`
 
   db.query(sql, (err, resultado) => {
     if(err) return res.status(500).json({mesagge: "error"})
@@ -93,7 +120,64 @@ const getAllUsuarios = (req, res) => {
     res.status(200).json(resultado)
     })
 }
+const getUsuarioById = (req, res) => {
+  const { id } = req.params;
+
+  if (!id || isNaN(id)) {
+    return res.status(400).json({
+      success: false,
+      message: "ID incorrecto"
+    });
+  }
+
+  const sql = `
+    SELECT
+      u.id,
+      u.nombre,
+      u.apellido,
+      u.email,
+      (
+        SELECT JSON_ARRAYAGG(JSON_OBJECT('id', o.id, 'paquete_id', o.paquete_id, 'comentario', o.comentario, 'calificacion', o.calificacion, 'fecha', o.fecha))
+        FROM opiniones o
+        WHERE o.usuario_id = u.id
+      ) AS opiniones,
+      (
+        SELECT JSON_ARRAYAGG(JSON_OBJECT('id', r.id, 'paquete_id', r.paquete_id, 'fecha', r.fecha, 'cantidad', r.cantidad, 'pagada', r.pagada))
+        FROM reservas r
+        WHERE r.usuario_id = u.id
+      ) AS reservas
+    FROM usuarios u
+    WHERE u.id = ?;
+  `;
+
+  db.query(sql, [id], (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error en la solicitud"
+      });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Solicitud procesada con éxito",
+      data: results[0]
+    });
+  });
+};
 
 
 
-module.exports = {registrarUsuario, getAllUsuarios, iniciarSesion}
+module.exports = {
+  registrarUsuario, 
+  getAllUsuarios,
+  iniciarSesion,
+  getUsuarioById
+}

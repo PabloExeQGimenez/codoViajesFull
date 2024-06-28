@@ -1,7 +1,28 @@
 const db = require("../db/db.js");
 
 const getAllReservas = (req, res) => {
-  const sql = "SELECT * FROM reservas";
+  const sql = `
+  SELECT
+    r.id,
+    r.fecha,
+    r.cantidad,
+    r.pagada,
+    JSON_OBJECT(
+      'id', u.id,
+      'nombre', u.nombre,
+      'apellido', u.apellido,
+      'email', u.email
+    ) AS usuario,
+    JSON_OBJECT(
+      'id', p.id,
+      'nombre', p.nombre,
+      'descripcion', p.descripcion,
+      'costo', p.costo
+    ) AS paquete
+  FROM reservas r
+  LEFT JOIN usuarios u ON r.usuario_id = u.id
+  LEFT JOIN paquetes p ON r.paquete_id = p.id;
+`
 
   db.query(sql, (err, results) => {
     if (err) {
@@ -62,7 +83,29 @@ const getReservaById = (req, res) => {
     });
   }
 
-  const sql = "SELECT * FROM reservas WHERE id = ?";
+  const sql = `
+  SELECT
+    r.id,
+    r.fecha,
+    r.cantidad,
+    r.pagada,
+    JSON_OBJECT(
+      'id', u.id,
+      'nombre', u.nombre,
+      'apellido', u.apellido,
+      'email', u.email
+    ) AS usuario,
+    JSON_OBJECT(
+      'id', p.id,
+      'nombre', p.nombre,
+      'descripcion', p.descripcion,
+      'costo', p.costo
+    ) AS paquete
+  FROM reservas r
+  LEFT JOIN usuarios u ON r.usuario_id = u.id
+  LEFT JOIN paquetes p ON r.paquete_id = p.id
+  WHERE r.usuario_id = ?;
+`
   db.query(sql, [id], (err, results) => {
     if (err) {
       return res.status(500).json({
