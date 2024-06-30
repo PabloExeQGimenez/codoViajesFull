@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codo Viajes | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://kit.fontawesome.com/1e025ea79c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css" integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <!--menu pc-->
+        <div>
+            <img class="logo" src="./assets/img/Agregar_un_titulo_1.gif" alt="logo">
+        </div>
+        
+        <nav class="menu">
+            <a class="activo" href="./index.html">Inicio</a>
+            <a href="./assets/pages/paquetes.html">Paquetes</a>
+            <a href="./assets/pages/asistencia.html">Asistencia</a>
+            <a href="./assets/pages/pasajes.html">Pasajes</a>
+            <a href="./assets/pages/nosotros.html">Nosotros</a>
+        </nav>
+        <!--fin menu pc-->
+        <!--menu responsive-->
+        <button class="btn btnResponsive" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+                class="bi bi-list"></i></button>
+                
+        <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <nav class="menuResponsive">
+                    <a class="activo" href="./index.html">Inicio</a>
+                    <a href="./assets/pages/paquetes.html">Paquetes</a>
+                    <a href="./assets/pages/asistencia.html">Asistencia</a>
+                    <a href="./assets/pages/pasajes.html">Pasajes</a>
+                    <a href="./assets/pages/nosotros.html">Nosotros</a>
+                </nav>
+            </div>
+        </div>
+        <!--fin menu responsive-->
+    </header>
+    <!-- <section class="carousel">
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active la"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/img/bannerMicro.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/banner2.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/banner3.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section> -->
+    <!--comienzo del carrousel-->
+    <div class="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <video autoplay loop muted class="video">
+                        <source  src="./assets/video/pumahuaca.mp4" type="video/mp4">
+                        Su navegador no soporta la etiqueta de vídeo.
+                    </video>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="./assets/img/bannerMicro.jpg" class="d-block w-100" alt="Descripción de la imagen">
+                </div>
+                <div class="carousel-item">
+                    <video autoplay loop muted class="video">
+                        <source src="./assets/video/bariloche.mp4" type="video/mp4">
+                        Su navegador no soporta la etiqueta de vídeo.
+                    </video>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previo</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Proximo</span>
+            </button>
+        </div>
+    </div>
+    <!--finalizacion del carrousel-->
+    <main class="mainIndex">
+        <h2>Nuestros planes</h2>
+
+        <section class="seccionCards">
+
+            <div class="card">
+                <img src="./assets/img/mdp.jpg" alt="Mar del Plata">
+                <div class="infobox">
+                    <h3>Mar del Plata</h3>
+                    <p>Pasá una semana en la ciudad turística por excelencia. Conocé las
+                        propuestas.</p>
+                    <ul>
+                        <li>6 noches 7 días</li>
+                        <li>[Precio]</li>
+                        <li>Micro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./assets/img/cba.jpg" alt="Córdoba">
+                <div class="infobox">
+                    <h3>Córdoba</h3>
+                    <p>Date una escapada a una de las ciudades con mayor valor cultural del país.</p>
+                    <ul>
+                        <li>3 noches 4 días</li>
+                        <li>[Precio]</li>
+                        <li>Micro</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="newsletter">
+            <div id="sectionleft">
+                <h2>¡Estemos en contacto!</h2>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d420378.58700633055!2d-62.536977133118825!3d-34.598908800937124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1711660303100!5m2!1ses-419!2sar"
+                    width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <form>
+                <label for="nombre">Nombre</label>
+                <input type="text" placeholder="¿Cómo te gusta que te llamen?" id="nombre" oninput="validaEnviar()">
+                <label for="email">e-mail</label>
+                <input type="email" placeholder="nombre@dominio.extension" id="email" oninput="validaEnviar()">
+                <label for="celular">Celular</label>
+                <input type="tel" placeholder="Tu número de celular" id="celular" oninput="validaEnviar()">
+                <label for="idioma">
+                    Idioma preferido:
+                    <select id="idioma">
+                        <option value="castellano">Castellano</option>
+                        <option value="english">English</option>
+                        <option value="portugues">Português</option>
+                    </select>
+                </label>
+                <label class="labelcheckbox">
+                    <input type="checkbox" id="cbox1" value="cb1" onchange="validaEnviar()">Quiero enterarme sus promociones
+                </label>
+                <label class="labelcheckbox">
+                    <input type="checkbox" id="cbox2" value="cb2" onchange="validaEnviar()">Quiero hablar con un operador
+                </label>
+                <input type="submit" value="Enviar" id="submit" onclick="correcto()">
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="redes">
+            <a href="http://www.facebook.com" class="text-reset" target="_blank">
+                <i class="fa-brands fa-square-facebook"></i>
+            </a>
+            <a href="https://x.com/?lang=es" target="_blank" class="text-reset">
+                <i class="fa-brands fa-square-x-twitter"></i></a>
+            <a href="http://www.google.com" target="_blank" class="text-reset">
+                <i class="fa-brands fa-square-google-plus"></i></a>
+                <a href="http://www.instagram.com" target="_blank" class="text-reset">
+                    <i class="fa-brands fa-square-instagram"></i>
+                </a>
+        </div>
+        <div class="foot__text">
+            <p>© 2024 Codo Viajes - Grupo NODA.js</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <script src="./assets/scripts/script.js"></script>
+        <script src="./assets/scripts/validaEnviar.js"></script>
+</body>
+
+</html>

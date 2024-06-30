@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Viaje</title>
+    <link rel="stylesheet" href="../styles/paquetes1.css">
+</head>
+
+<body>
+    <br><br>
+    <h1>Reserva de Paquete (todo incluido)</h1>
+    <form id="reservaPaqueteForm">
+        <input type="hidden" id="usuario_id" value="1">
+        <label for="paquete_id">Paquete de viaje:</label>
+        <select id="paquete_id" required>
+            <option value="Mar Del Plata">Mar Del Plata</option>
+            <option value="San Carlos de Bariloche">San Carlos de Bariloche</option>
+            <option value="Cordoba">Cordoba</option>
+            <option value="Tandil">Tandil</option>
+            <option value="Iguazu">Iguazu</option>
+            <option value="Buzeos">Buzeos</option>
+        </select>
+        <label for="fecha_ida_paquete">Fecha de ida:</label>
+        <input type="date" id="fecha_ida_paquete" required>
+        <label for="fecha_vuelta_paquete">Fecha de vuelta:</label>
+        <input type="date" id="fecha_vuelta_paquete" required>
+        <label for="cantidad_paquete">Pasajero:</label>
+        <input type="number" id="cantidad_paquete" class="input-cantidad" min="1" required>
+        <button type="submit">Reservar</button>
+    </form>
+    <table id="reservasPaqueteTable">
+        <thead>
+            <tr>
+                <th>Paquete</th>
+                <th>Fecha de Ida</th>
+                <th>Fecha de Vuelta</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br><br>
+    <hr /><br>
+    <h1>Reserva de Pasajes</h1>
+    <form id="reservaPasajeForm">
+        <input type="hidden" id="usuario_id" value="1">
+        <label for="destino_id">Destino:</label>
+        <select id="destino_id" required>
+            <option value="Mar Del Plata">Mar Del Plata</option>
+            <option value="San Carlos de Bariloche">San Carlos de Bariloche</option>
+            <option value="Cordoba">Cordoba</option>
+            <option value="Tandil">Tandil</option>
+            <option value="Iguazu">Iguazu</option>
+            <option value="Buzeos">Buzeos</option>
+        </select>
+        <label for="fecha_ida_pasaje">Fecha de ida:</label>
+        <input type="date" id="fecha_ida_pasaje" required>
+        <label for="fecha_vuelta_pasaje">Fecha de vuelta:</label>
+        <input type="date" id="fecha_vuelta_pasaje" required>
+        <label for="cantidad_pasaje">Pasajero:</label>
+        <input type="number" id="cantidad_pasaje" class="input-cantidad" min="1" required>
+        <button type="submit">Reservar</button>
+    </form>
+    <table id="reservasPasajeTable">
+        <thead>
+            <tr>
+                <th>Destino</th>
+                <th>Fecha de Ida</th>
+                <th>Fecha de Vuelta</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src="../scripts/script.js"></script>
+</body>
+
+</html>

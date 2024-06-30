@@ -1,0 +1,291 @@
+@import url(./colores.css);
+@import url(./fonts.css);
+body {
+    min-height: 100vh;
+    background-color: #444;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4.5rem;
+    background-color: var(--principal);
+    width: 100%;
+}
+
+header .logo {
+    width: 23.125rem;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 426px) {
+    header .logo {
+        width: 18rem;
+        
+    }
+
+   .pageCoverAsistent {
+        content: url("../img/asistenciaAlViajero.jpg");
+        object-position: top;
+    }
+}
+
+header .menu {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+header .menu a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: ease-in-out 0.3s;
+    padding: 0 1rem;
+}
+
+header .menu a:hover {
+    color: black;
+    background-color: var(--menu);
+    padding: 1.5rem 1rem;
+}
+
+header .menu .activo {
+    background-color: var(--menu);
+    color: black;
+    padding: 1.5rem 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    header .menu {
+        display: none;
+    }
+
+        .imageAsist {
+            margin: 2em auto;
+        
+        }
+}
+
+.btnResponsive {
+    display: none;
+}
+
+.btnResponsive .bi-list {
+    color: white;
+    font-size: 1.5em;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .btnResponsive {
+        display: inline;
+    }
+    .imageAsist {
+            margin: 2em auto;
+        }
+}
+    
+
+
+.offcanvas {
+    background-color: var(--principal);
+    width: 15rem !important;
+    margin-top: 4.5rem;
+    border-radius: 0 12px 12px 0;
+}
+
+.offcanvas .menuResponsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offcanvas .menuResponsive a {
+    width: 50%;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: ease-in-out 0.3s;
+    padding: 0.5rem;
+}
+
+.offcanvas .menuResponsive a:hover {
+    color: black;
+    background-color: var(--menu);
+}
+
+.offcanvas .menuResponsive .activo {
+    background-color: var(--menu);
+    color: black;
+}
+
+.mainAsist {
+    margin-top: 4.5rem;
+    width: 100%;
+    height: auto;
+}
+
+.bannerAsist {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.pageCoverAsistent {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sectionAsist {
+    background-color: rgb(210, 210, 210);
+    padding: 20px;
+    text-align: center;
+}
+
+.promo {
+    background-color: #000000;
+    width: 100%;
+    color: #ffffff;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-container {
+    white-space: nowrap;
+    animation: marquee 24s linear infinite;
+}
+
+.question {
+    background-color: #292D2F;
+    padding: 20px;
+}
+
+.menuOpcAsist {
+    display: inline-flex;
+    margin: 1em 2em 2em 3em;
+    font-size: larger;
+}
+
+.hoverOpcMenu {
+    color: rgb(255, 255, 255);
+}
+
+.hoverOpcMenu:hover {
+    color: rgb(233, 219, 16);
+}
+
+.hoverOpcMenu:active {
+    color: rgb(251, 255, 0);
+}
+
+.imageAsist {
+    padding: 0;
+    height: auto;
+    width: 100%;
+    max-width: 28em;
+    margin: 2em 2em;
+   /*  display>
+    -webkit-box-reflect: below 0px *//*  -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0, 0, 0, 0.1))); */
+}
+
+.imageAsist:hover {
+    opacity: 1;
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0, 0, 0, 0.4)));
+    -webkit-box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+    -moz-box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.images-container .imageAsist {
+    flex: 1 1 calc(50% - 1rem);
+}
+
+@media screen and (max-width: 768px) {
+    .images-container .imageAsist {
+        flex: 1 1 100%;
+    }
+
+        .imageAsist {
+            margin: 2em auto;
+        }
+}
+
+.paragraphAsist {
+    margin: 0 1em;
+    padding: 1em 2em 0.3em 1em;
+    text-align: left;
+}
+
+.listAsist {
+    margin: 2em;
+    text-align: left;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    height: 6rem;
+    background-color: var(--principal);
+    color: white;
+}
+
+.footer .redes {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.footer .redes .fa-brands {
+    font-size: 1.8rem;
+    color: var(--menu);
+    text-decoration: none;
+}
+

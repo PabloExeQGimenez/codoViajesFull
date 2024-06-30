@@ -1,13 +1,19 @@
-const express = require('express')
-const movieRoutes = require("../routes/movieRoutes")
-const PORT = 3000
-const app = express()
+// app.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const compraRoutes = require('./routes/compraRoutes');
 
+const app = express();
 
-app.use(express.json())
-app.use(express.static("public"))
-app.use("/movies", movieRoutes)
+app.use(bodyParser.json());
 
+app.use('/api', compraRoutes);
+
+app.get('/', (req, res) => {
+    res.send('Bienvenido a la API de Compras');
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor montado en http://localhost:${PORT}`)
-})
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
