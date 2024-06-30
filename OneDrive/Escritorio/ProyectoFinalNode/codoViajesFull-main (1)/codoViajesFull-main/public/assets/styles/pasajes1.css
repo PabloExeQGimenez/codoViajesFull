@@ -1,0 +1,253 @@
+@import url(./colores.css);
+@import url(./fonts.css);
+
+body {
+    font-family: Arial, sans-serif;
+     background-color: #eaeaea;
+    padding: 10px;
+    margin: 0;
+    
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4.5rem;
+    background-color: var(--principal);
+    width: 100%;
+    overflow: hidden;
+
+
+    .logo {
+        width: 23.125rem;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width:426px) {
+        .logo {
+            width: 18rem;
+        }
+    }
+
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        & a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0 1rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+            padding: 1.5rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .menu {
+            display: none;
+        }
+    }
+}
+
+.btnResponsive {
+    display: none;
+
+    .bi-list {
+        color: white;
+        font-size: 1.5em;
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .btnResponsive {
+        display: inline;
+    }
+}
+
+.offcanvas {
+    background-color: var(--principal);
+    width: 15rem !important;
+    margin-top: 4.5rem;
+    border-radius: 0 12px 12px 0;
+
+    .menuResponsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & a {
+            width: 50%;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0.5rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+        }
+    }
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+/* Tarjetas */
+.card {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Formulario */
+form {
+    width: 100%;
+    /* Ocupa todo el ancho en dispositivos móviles */
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+    opacity: 0.8;
+}
+
+button.aceptar {
+    background-color: #4CAF50;
+}
+
+button.cancelar {
+    background-color: #f44336;
+}
+
+/* Tabla de reservas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Botones de acción en la tabla */
+.action-button {
+    margin: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/*Adaptado para celular */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    table {
+        font-size: 11px;
+    }
+
+    .action-button {
+        font-size: 12px;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    height: 6rem;
+    background-color: var(--principal);
+    color: white;
+}
+
+.footer .redes {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.footer .redes .fa-brands {
+    font-size: 1.8rem;
+    color: var(--menu);
+    text-decoration: none;
+}
