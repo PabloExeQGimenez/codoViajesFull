@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        addReserva(tableBodyPaquete, paquete, fechaIda, fechaVuelta, cantidad);
+        // Llamada a la API para guardar la reserva
+        guardarReserva('paquetes', paquete, fechaIda, fechaVuelta, cantidad, tableBodyPaquete);
     });
 
     // Reservas de Pasajes
@@ -34,13 +35,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        addReserva(tableBodyPasaje, destino, fechaIda, fechaVuelta, cantidad);
+        // Llamada a la API para guardar la reserva
+        guardarReserva('pasajes', destino, fechaIda, fechaVuelta, cantidad, tableBodyPasaje);
     });
 
-    function addReserva(tableBody, destino, fechaIda, fechaVuelta, cantidad) {
+    function guardarReserva(tipo, lugar, fechaIda, fechaVuelta, cantidad, tableBody) {
+        // Configuración de la llamada a la API
+        const url = `http://localhost:3000/api/${tipo}`;
+        const data = {
+            lugar: lugar,
+            fechaIda: fechaIda,
+            fechaVuelta: fechaVuelta,
+            cantidad: cantidad
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(reserva => {
+            // Agregar la reserva a la tabla
+            addReserva(tableBody, reserva.lugar, reserva.fechaIda, reserva.fechaVuelta, reserva.cantidad);
+        })
+        .catch(error => {
+            console.error('Error al guardar reserva:', error);
+            alert('Error al guardar la reserva. Por favor, intente nuevamente.');
+        });
+    }
+
+    function addReserva(tableBody, lugar, fechaIda, fechaVuelta, cantidad) {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${destino}</td>
+            <td>${lugar}</td>
             <td>${fechaIda}</td>
             <td>${fechaVuelta}</td>
             <td>${cantidad}</td>
@@ -66,4 +96,3 @@ document.addEventListener('DOMContentLoaded', () => {
         row.remove();
     }
 });
-
