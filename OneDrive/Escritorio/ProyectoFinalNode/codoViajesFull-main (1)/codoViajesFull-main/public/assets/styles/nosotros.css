@@ -1,0 +1,274 @@
+@import url(./colores.css);
+@import url(./fonts.css);
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4.5rem;
+    background-color: var(--principal);
+    width: 100%;
+    overflow: hidden;
+
+    .logo {
+        width: 23.125rem;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width:426px) {
+        .logo {
+            width: 18rem;
+        }
+    }
+
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        & a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0 1rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+            padding: 1.5rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .menu {
+            display: none;
+        }
+    }
+}
+
+
+.btnResponsive {
+    display: none;
+
+    .bi-list {
+        color: white;
+        font-size: 1.5em;
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .btnResponsive {
+        display: inline;
+    }
+}
+
+.offcanvas {
+    background-color: var(--principal);
+    width: 15rem !important;
+    margin-top: 4.5rem;
+    border-radius: 0 12px 12px 0;
+
+    .menuResponsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & a {
+            width: 50%;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0.5rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+        }
+    }
+}
+div{
+    color: #fff;
+    font-size: 20px; 
+}
+div > div{
+    background-color: #000000ab;
+    padding: 3em;    
+}
+header.navfijo {
+    position: sticky;
+    top: 0;
+}
+
+.contnos{
+    margin-top:4.5rem;
+    display: list-item;
+    grid-column-start: auto;
+    width: 100%;
+    gap: 1em;
+}
+.main{
+    grid-column: 1 / 11;
+    font-size: 1em;
+}
+.nos{
+    background: url(../img/vacaciones.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;   
+}
+.tarjetitas{
+    background-color: transparent;
+    margin: 0;
+    display: inline-table;
+    padding: 0;
+    font-size: 1.1em; 
+    
+}
+#izquierdo{
+    grid-column: 1 / 7;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+       
+}
+#derecho{
+    grid-column: 7 / 11;
+    font-size: 1em;
+}
+
+.left p {margin:0}
+
+@media only screen and (min-width:750px)  {    
+    footer {
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: black;
+        box-sizing: border-box;
+        padding: 5vw 3vw;   
+    }
+    
+    footer > .left {
+        display: flex; flex-direction: column;
+        align-items: baseline;
+        gap:3vw; color: white;
+    }
+    
+    footer a {
+        text-decoration: none;
+        color: white;
+        margin: 0;
+    }
+    .left p {margin:0}
+    #derecho{
+        font-size: 1em;
+    }
+    .main{
+        font-size: 1em;
+    }
+    .tarjetitas{
+        display: flex;
+        background-color: transparent;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        font-size: 20px; 
+
+        & img{
+            width: 33%;
+        }
+        
+    }  
+   
+}
+@media screen and (max-width:426px){
+    .tarjetitas img{
+            width: 100%;            
+    }
+}
+@media only screen and (min-width:1000px)  {
+    footer {padding: 2vw 3vw}
+    iframe{border-radius: 20px;}
+    .tarjetitas{
+        display: flex;
+        background-color: transparent;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        font-size: 1em; 
+    }
+    .main{
+        font-size: 1em;
+    }
+    #derecho{
+        font-size: 1em;
+    }
+    #izquierdo{
+        grid-column: 1 / 8;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+           
+    }
+    #derecho{
+        grid-column: 8 / 11;
+        font-size: 20px;
+    }
+    .contnos{
+        display: grid;
+        width: 100%;
+        gap: 1em;
+        
+    }
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap:0;
+    height: 6rem;
+    background-color: var(--principal);
+    color: white;
+
+    .redes{
+        display: flex;
+        gap: 1.2rem;
+
+        .fa-brands{
+            font-size: 1.9rem;
+            color: var(--menu);
+            text-decoration: none;
+
+        }
+
+    }
+}

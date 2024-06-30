@@ -1,0 +1,345 @@
+@import url(./colores.css);
+@import url(./fonts.css);
+
+.video{
+    width: 100%;
+    object-fit: cover;
+    height: 25rem;
+    object-position: 30%;
+}
+@media screen and (max-width:767px){
+    .video{
+        height: auto;
+    }
+}
+
+body{
+    background-color: #eaeaea;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4.5rem;
+    background-color: var(--principal);
+    width: 100%;
+    overflow: hidden;
+    
+
+    .logo {
+        width: 23.125rem;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width:426px) {
+        .logo {
+            width: 18rem;
+        }
+    }
+
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        & a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0 1rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+            padding: 1.5rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .menu {
+            display: none;
+        }
+    }
+}
+
+.btnResponsive {
+    display: none;
+
+    .bi-list {
+        color: white;
+        font-size: 1.5em;
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .btnResponsive {
+        display: inline;
+    }
+}
+
+.offcanvas {
+    background-color: var(--principal);
+    width: 15rem !important;
+    margin-top: 4.5rem;
+    border-radius: 0 12px 12px 0;
+
+    .menuResponsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & a {
+            width: 50%;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: ease-in-out 0.3s;
+            padding: 0.5rem;
+
+            &:hover {
+                color: black;
+                background-color: var(--menu);
+            }
+        }
+
+        .activo {
+            background-color: var(--menu);
+            color: black;
+        }
+    }
+}
+.carousel{
+    margin-top: 4.5rem;
+}
+.carousel-item {
+
+    & img {
+        height: 25rem;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width:768px) {
+        & img {
+            height: 14.9rem;
+            
+        }
+
+
+    }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--principal);
+    border-radius: 50%;
+}
+
+/*cards*/
+
+h2 {
+    text-align: center;
+    margin: 2rem;
+}
+
+.seccionCards {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: 0 auto;
+    gap: 5%;
+
+    .card {
+        width: 45%;
+        border-radius: 10px;
+        box-shadow: 2px 5px 15px #999;
+        transition: all 100ms;
+    }
+    @media screen and (max-width:768px) {
+        .card{
+            width: 90%;
+            margin: 1rem auto;
+        }
+        
+    }
+
+    .card:hover {
+        transform: scale(1.08)
+    }
+
+    .card img {
+        width: 100%;
+        height: 10rem;
+        border-radius: 10px 10px 0 0;
+        object-fit: cover;
+    }
+
+    .card img:hover {
+        transition: 0.1s;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width:768px){
+    .seccionCards{
+        flex-direction: column;
+        gap:1rem;
+        width: 100%;
+    }
+    
+}
+
+.infobox {
+    padding: 1rem;
+}
+
+
+.infobox > h3 {
+    text-align: center;
+}
+
+.infobox>p {
+    font-weight: 300;
+}
+
+.infobox li {
+    margin: 10px
+}
+
+#newsletter {
+    margin-top: 3rem;
+    padding: 3rem;
+    display: flex;
+    justify-content: center; 
+    background-color: #222;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+@media screen and (max-width:768px){
+    #newsletter{
+        flex-direction: column;
+    }
+}
+
+#sectionleft {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+}
+
+#sectionleft > h2 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+iframe {
+    width: 100%; 
+    height: 35vw;
+    align-self: center;
+    border-radius: 7px;
+}
+form {
+    display: flex; flex-direction: column;
+    align-items: center;
+    width: 40%;
+    gap: 1vw;
+}
+@media screen and (max-width:768px){
+    form{
+    width: 90%;
+    margin: 0 auto;
+    }
+}
+
+input {
+    width:100%;
+    padding: 0.8vw;
+    padding-left: 4vw;
+    outline: none;
+}
+
+select {
+    margin-left: 3vw;
+    margin-bottom: 2vw;
+    padding: 1vw 1.5vw;
+    border: 3px solid var(--menu);
+    font-weight: 300;
+    border-radius: 4px;
+    outline: none;
+}
+
+label {
+    display: flex; gap: 2vw;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #aaa;
+    width: 100%;
+}
+
+input[type=checkbox] {
+    width: 3rem;
+    aspect-ratio: 2/1;
+}
+
+.labelcheckbox {
+    display: flex;
+    justify-content:flex-start; align-items: center;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.4rem;
+    margin-bottom: 1.2vw;
+
+}
+
+input[type="submit"] {
+    background-color: var(--menu);
+    color: black;
+    border: solid 1px white;
+    border-radius: 8px;
+    padding-left: 0;
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap:0;
+    height: 6rem;
+    background-color: var(--principal);
+    color: white;
+
+    .redes{
+        display: flex;
+        gap: 1.2rem;
+
+        .fa-brands{
+            font-size: 1.9rem;
+            color: var(--menu);
+            text-decoration: none;
+
+        }
+
+    }
+}
