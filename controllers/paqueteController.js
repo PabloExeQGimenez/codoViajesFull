@@ -130,8 +130,6 @@ const getPaqueteById = (req, res) => {
   });
 };
 
-
-
 const createPaquete = (req, res) => {
   const {nombre, descripcion, costo, imagen} = req.body
 
@@ -158,8 +156,57 @@ const createPaquete = (req, res) => {
   })
 }
 
+const deletePaquete = (req, res) => {
+  const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID no válido"
+    });
+  }
+
+  const deleteOpinionesSql = 'DELETE FROM opiniones WHERE paquete_id = ?';
+  db.query(deleteOpinionesSql, [id], (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "No se pudieron eliminar las opiniones del paquete"
+      });
+    }
+
+    const deleteReservasSql = 'DELETE FROM reservas WHERE paquete_id = ?';
+    db.query(deleteReservasSql, [id], (err, results) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: "No se pudieron eliminar las reservas del paquete"
+        });
+      }
+
+      const deletePaqueteSql = 'DELETE FROM paquetes WHERE id = ?';
+      db.query(deletePaqueteSql, [id], (err, results) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: "No es posible eliminar el paquete"
+          });
+        }
+
+        res.status(200).json({
+          success: true,
+          message: "El paquete se eliminó"
+        });
+      });
+    });
+  });
+};
+
+
+
 module.exports = { 
   getAllPaquetes,
   getPaqueteById,
-  createPaquete
+  createPaquete,
+  deletePaquete
  }

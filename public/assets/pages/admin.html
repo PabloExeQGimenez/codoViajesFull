@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paquetes de Viaje</title>
+    <title>Panel de Administración</title>
     <link rel="stylesheet" href="../styles/admin.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="menu">
-        <h3>Administrador</h3>
-        <a href="">Usuarios</a>
-        <a href="">Paquetes</a>
-        <a href="">Reservas</a>
-        <a href="">Opiniones</a>
-      </div>
-      <div class="panel">
-        <div class="panel__usuarios">
+    <div class="admin-panel">
+      <nav class="sidebar">
+        <ul>
+          <li><a href="#" id="usuarios-link">Usuarios</a></li>
+          <li><a href="#" id="reservas-link">Reservas</a></li>
+          <li><a href="#" id="paquetes-link">Paquetes</a></li>
+          <li><a href="#" id="opiniones-link">Opiniones</a></li>
+        </ul>
+      </nav>
+      <main class="content">
+        <div id="usuarios-section" class="section">
+          <h2>Usuarios</h2>
           <table id="usuarios_tabla">
             <thead>
               <tr>
@@ -24,17 +26,62 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
-                <th>Contraseña</th>
                 <th>Reservas</th>
                 <th>Opiniones</th>
+                <th colspan="2">acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="reservas-section" class="section">
+          <h2>Reservas</h2>
+          <table id="reservas_tabla">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Pagada</th>
+                <th>Cantidad</th>
+                <th>Paquete ID</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="paquetes-section" class="section">
+          <h2>Paquetes de Viajes</h2>
+          <table id="paquetes_tabla">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Opiniones</th>
+                <th>Calificaciones</th>
               </tr>
             </thead>
             <tbody>
-             
             </tbody>
           </table>
         </div>
-      </div>
+        <div id="opiniones-section" class="section">
+          <h2>Opiniones</h2>
+          <table id="opiniones_tabla">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Comentario</th>
+                <th>Calificación</th>
+                <th>Paquete ID</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </main>
     </div>
     <script src="../scripts/admin.js"></script>
   </body>

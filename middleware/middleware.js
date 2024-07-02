@@ -21,9 +21,28 @@ const verificarToken = (req, res, next) => {
       });
     }
 
-    req.userId = decoded.id;
+    req.usuario = decoded;
     next();
   });
 };
+const esUsuario = (req, res, next) => {
+  if (req.usuario && req.usuario.role === 'usuario') {
+    next();
+  } else {
+    res.status(403).json({ mensaje: "Acceso denegado: Se requiere rol de usuario" });
+  }
+};
 
-module.exports = verificarToken;
+const esAdmin = (req, res, next) => {
+  if (req.usuario && req.usuario.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ mensaje: "Acceso denegado: Se requiere rol de administrador" });
+  }
+};
+
+module.exports = {
+  verificarToken,
+  esUsuario,
+  esAdmin
+}

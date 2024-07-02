@@ -21,8 +21,7 @@ const getAllReservas = (req, res) => {
     ) AS paquete
   FROM reservas r
   LEFT JOIN usuarios u ON r.usuario_id = u.id
-  LEFT JOIN paquetes p ON r.paquete_id = p.id;
-`
+  LEFT JOIN paquetes p ON r.paquete_id = p.id;`
 
   db.query(sql, (err, results) => {
     if (err) {
@@ -37,8 +36,7 @@ const getAllReservas = (req, res) => {
       results,
     });
   });
-};
-
+}
 const createReserva = (req, res) => {
   const { usuario_id, paquete_id, fecha, cantidad } = req.body;
 
@@ -62,17 +60,10 @@ const createReserva = (req, res) => {
     res.status(201).json({
       success: true,
       message: "Reserva creada con exito",
-      data: {
-        id: results.insertId,
-        usuario_id,
-        paquete_id,
-        fecha,
-        cantidad,
-      },
+      results
     });
   });
-};
-
+}
 const getReservaById = (req, res) => {
   const { id } = req.params;
 
@@ -104,8 +95,7 @@ const getReservaById = (req, res) => {
   FROM reservas r
   LEFT JOIN usuarios u ON r.usuario_id = u.id
   LEFT JOIN paquetes p ON r.paquete_id = p.id
-  WHERE r.usuario_id = ?;
-`
+  WHERE r.usuario_id = ?;`
   db.query(sql, [id], (err, results) => {
     if (err) {
       return res.status(500).json({
@@ -124,11 +114,10 @@ const getReservaById = (req, res) => {
     res.status(200).json({
       success: true,
       message: "Solicitud procesada con exito",
-      data: results[0],
+      data: results[0]
     });
   });
-};
-
+}
 const updateReserva = (req, res) => {
   const { id } = req.params
   const {usuario_id, paquete_id, fecha, cantidad} = req.body
