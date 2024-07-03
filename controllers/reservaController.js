@@ -37,6 +37,7 @@ const getAllReservas = (req, res) => {
     });
   });
 }
+
 const createReserva = (req, res) => {
   const { usuario_id, paquete_id, fecha, cantidad } = req.body;
 
@@ -60,10 +61,10 @@ const createReserva = (req, res) => {
     res.status(201).json({
       success: true,
       message: "Reserva creada con exito",
-      results
     });
   });
 }
+
 const getReservaById = (req, res) => {
   const { id } = req.params;
 
@@ -95,7 +96,7 @@ const getReservaById = (req, res) => {
   FROM reservas r
   LEFT JOIN usuarios u ON r.usuario_id = u.id
   LEFT JOIN paquetes p ON r.paquete_id = p.id
-  WHERE r.usuario_id = ?;`
+  WHERE r.id = ?;`
   db.query(sql, [id], (err, results) => {
     if (err) {
       return res.status(500).json({
@@ -104,7 +105,7 @@ const getReservaById = (req, res) => {
       });
     }
 
-    if (results.length === 0) {
+    if (results.affectedRows === 0) {
       return res.status(400).json({
         success: false,
         message: "Reserva no encontrada",
@@ -114,10 +115,11 @@ const getReservaById = (req, res) => {
     res.status(200).json({
       success: true,
       message: "Solicitud procesada con exito",
-      data: results[0]
+      results
     });
   });
 }
+
 const updateReserva = (req, res) => {
   const { id } = req.params
   const {usuario_id, paquete_id, fecha, cantidad} = req.body
@@ -195,7 +197,6 @@ const deleteReserva = (req, res) => {
 
 const buyReserva = (req, res) => {
   const {id} = req.params 
-  const {pagada} = req.body
 
   if(!id){
     return res.status(400).json({
@@ -204,8 +205,8 @@ const buyReserva = (req, res) => {
     })
   }
   
-  const sql = 'UPDATE reservas SET pagada = ? WHERE id = ?'
-  db.query(sql, [pagada, id], (err, results) => {
+  const sql = 'UPDATE reservas SET pagada = 1 WHERE id = ?'
+  db.query(sql, [id], (err, results) => {
     if(err){
       return res.status(500).json({
         success: false,
@@ -222,9 +223,7 @@ const buyReserva = (req, res) => {
     res.status(200).json({
       success: true,
       message:"Pago realizado con exito",
-      data:{
-        id, pagada
-      }
+      results
     })
   })
 }

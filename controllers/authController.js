@@ -37,85 +37,6 @@ const registrarUsuario = (req, res) =>{
   })
 }
 
-const iniciarSesion = (req, res) => {
-  const { email, contrasena } = req.body;
-
-  if (!email || !contrasena) {
-    return res.status(404).json({
-      mensaje: "Falta ingresar algún dato"
-    });
-  }
-
-  const sqlUsuarios = 'SELECT * FROM usuarios WHERE email = ?'
-  const sqlAdmins = 'SELECT * FROM admins WHERE email = ?'
-
-  db.query(sqlUsuarios, [email], (err, resultadoUsuarios) => {
-    if (err) {
-      return res.status(500).json({
-        mensaje: "Error en el servidor",
-        err
-      })
-    }
-
-    if (resultadoUsuarios.length > 0) {
-      const usuario = resultadoUsuarios[0];
-      const contrasenaValida = bcrypt.compareSync(contrasena, usuario.contrasena);
-
-      if (!contrasenaValida) {
-        return res.status(404).json({
-          mensaje: "Error en la contraseña"
-        })
-      }
-
-      const token = jwt.sign(
-        { id: usuario.id, email: usuario.email, role: 'usuario' },
-        config.JWT_SECRET,
-        { expiresIn: '1h' }
-      );
-
-      return res.status(200).json({
-        mensaje: "Inicio de sesión exitoso",
-        token
-      });
-    }
-  
-    db.query(sqlAdmins, [email], (err, resultadoAdmins) => {
-      if (err) {
-        return res.status(500).json({
-          mensaje: "Error en el servidor",
-          err
-        });
-      }
-
-      if (resultadoAdmins.length === 0) {
-        return res.status(404).json({
-          mensaje: "Usuario no encontrado"
-        });
-      }
-
-      const admin = resultadoAdmins[0];
-      const contrasenaValida = bcrypt.compareSync(contrasena, admin.contrasena);
-
-      if (!contrasenaValida) {
-        return res.status(404).json({
-          mensaje: "Error en la contraseña"
-        });
-      }
-
-      const token = jwt.sign(
-        { id: admin.id, email: admin.email, role: 'admin' },
-        config.JWT_SECRET,
-        { expiresIn: '1h' }
-      );
-
-      return res.status(200).json({
-        mensaje: "Inicio de sesión exitoso",
-        token
-      })
-    })
-  })
-}
-
 const getAllUsuarios = (req, res) => {
   
   const sql = `
@@ -291,7 +212,7 @@ const updateUsuario = (req, res) => {
     res.status(200).json({
       success: true,
       message: " Usuario actualizado con Exito",
-      data  
+      results  
     })
   })
 }
@@ -328,6 +249,84 @@ const registrarAdmin = (req, res) => {
   });
 }
 
+const iniciarSesion = (req, res) => {
+  const { email, contrasena } = req.body;
+
+  if (!email || !contrasena) {
+    return res.status(404).json({
+      mensaje: "Falta ingresar algún dato"
+    });
+  }
+
+  const sqlUsuarios = 'SELECT * FROM usuarios WHERE email = ?'
+  const sqlAdmins = 'SELECT * FROM admins WHERE email = ?'
+
+  db.query(sqlUsuarios, [email], (err, resultadoUsuarios) => {
+    if (err) {
+      return res.status(500).json({
+        mensaje: "Error en el servidor",
+        err
+      })
+    }
+
+    if (resultadoUsuarios.length > 0) {
+      const usuario = resultadoUsuarios[0];
+      const contrasenaValida = bcrypt.compareSync(contrasena, usuario.contrasena);
+
+      if (!contrasenaValida) {
+        return res.status(404).json({
+          mensaje: "Error en la contraseña"
+        })
+      }
+
+      const token = jwt.sign(
+        { id: usuario.id, email: usuario.email, role: 'usuario' },
+        config.JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      return res.status(200).json({
+        mensaje: "Inicio de sesión exitoso",
+        token
+      });
+    }
+  
+    db.query(sqlAdmins, [email], (err, resultadoAdmins) => {
+      if (err) {
+        return res.status(500).json({
+          mensaje: "Error en el servidor",
+          err
+        });
+      }
+
+      if (resultadoAdmins.length === 0) {
+        return res.status(404).json({
+          mensaje: "Usuario no encontrado"
+        });
+      }
+
+      const admin = resultadoAdmins[0];
+      const contrasenaValida = bcrypt.compareSync(contrasena, admin.contrasena);
+
+      if (!contrasenaValida) {
+        return res.status(404).json({
+          mensaje: "Error en la contraseña"
+        });
+      }
+
+      const token = jwt.sign(
+        { id: admin.id, email: admin.email, role: 'admin' },
+        config.JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      return res.status(200).json({
+        mensaje: "Inicio de sesión exitoso",
+        token
+      })
+    })
+  })
+}
 
 
 module.exports = {

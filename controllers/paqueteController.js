@@ -58,7 +58,7 @@ const getAllPaquetes = (req, res) => {
       data: results,
     });
   });
-};
+}
 
 const getPaqueteById = (req, res) => {
   const { id } = req.params;
@@ -128,7 +128,7 @@ const getPaqueteById = (req, res) => {
       data: results[0] || null
     });
   });
-};
+}
 
 const createPaquete = (req, res) => {
   const {nombre, descripcion, costo, imagen} = req.body
@@ -200,7 +200,7 @@ const deletePaquete = (req, res) => {
       });
     });
   });
-};
+}
 
 
 

@@ -343,3 +343,21 @@ input[type="submit"] {
 
     }
 }
+.adm{
+    height: 2rem;
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #222;
+}
+.adm a{
+    text-decoration: none;
+    color: #eaeaea;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+.adm a:hover{
+    background-color: var(--adm);
+}

@@ -1,7 +1,28 @@
 const db = require('../db/db.js')
 
 const getAllOpiniones = (req, res) => {
-  const sql = 'SELECT * FROM opiniones'
+  const sql = `
+        SELECT
+            o.id,
+            o.comentario,
+            o.calificacion,
+            o.fecha,
+            JSON_OBJECT(
+                'id', u.id,
+                'nombre', u.nombre,
+                'apellido', u.apellido,
+                'email', u.email
+            ) AS usuario,
+            JSON_OBJECT(
+                'id', p.id,
+                'nombre', p.nombre,
+                'descripcion', p.descripcion,
+                'costo', p.costo
+            ) AS paquete
+        FROM opiniones o
+        LEFT JOIN usuarios u ON o.usuario_id = u.id
+        LEFT JOIN paquetes p ON o.paquete_id = p.id;
+    `;
 
   db.query(sql, (err, results) => {
     if(err){
