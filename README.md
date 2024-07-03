@@ -2,7 +2,7 @@
 
 ## Backend
 [![My Skills](https://skillicons.dev/icons?i=js,nodejs,express,npm)](https://skillicons.dev)
-### Libreria MySql2
+### Librerias: MySql2, JWT, bcryptjs
 
 ## Frontend
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,bootstrap)](https://skillicons.dev)
